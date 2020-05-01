@@ -45,7 +45,7 @@ contract Encoder {
     bytes32 s; // `s` value of an ECDSA signature
   }
 
-    bytes32 internal constant ORDER_TYPEHASH = keccak256(
+  bytes32 internal constant ORDER_TYPEHASH = keccak256(
     abi.encodePacked(
       "Order(",
       "uint256 nonce,",
@@ -167,6 +167,53 @@ contract Encoder {
                   order.affiliate.wallet,
                   order.affiliate.token,
                   order.affiliate.data
+                )
+              )
+            )
+          )
+        )
+      );
+  }
+
+  function hashDataThenEncode(Order calldata order, bytes32 domainSeparator)
+    external
+    returns (bytes32)
+  {
+    return
+      keccak256(
+        abi.encode(
+          EIP191_HEADER,
+          domainSeparator,
+          keccak256(
+            abi.encode(
+              ORDER_TYPEHASH,
+              order.nonce,
+              order.expiry,
+              keccak256(
+                abi.encode(
+                  PARTY_TYPEHASH,
+                  order.signer.kind,
+                  order.signer.wallet,
+                  order.signer.token,
+                  keccak256(order.signer.data)
+                )
+              ),
+              keccak256(
+                abi.encode(
+                  PARTY_TYPEHASH,
+                  order.sender.kind,
+                  order.sender.wallet,
+                  order.sender.token,
+                  keccak256(order.sender.data)
+                )
+              ),
+              keccak256(
+                abi.encode(
+                  PARTY_TYPEHASH,
+                  order.affiliate.kind,
+                  order.affiliate.wallet,
+                  order.affiliate.token,
+                  keccak256(order.affiliate.data)
                 )
               )
             )

@@ -46,14 +46,14 @@ contract('Encoder', async accounts => {
         console.log(
           'data length ' +
             (data.length - 2) / 2 +
-            ', encode,       gas used: ' +
+            ', encode,      gas used: ' +
             tx.receipt.gasUsed
         )
-        tx = await encoder.hashOrderEncodePacked(order, emptySignature.r)
+        tx = await encoder.hashDataThenEncode(order, emptySignature.r)
         console.log(
           'data length ' +
             (data.length - 2) / 2 +
-            ', encodePacked, gas used: ' +
+            ', hashed data, gas used: ' +
             tx.receipt.gasUsed
         )
 
