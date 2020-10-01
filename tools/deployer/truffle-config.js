@@ -1,5 +1,5 @@
 require('dotenv').config()
-const HDWalletProvider = require('@truffle/hdwallet-provider')
+const HDWalletProvider = require('truffle-hdwallet-provider')
 const HDWalletProviderPriv = require('truffle-hdwallet-provider-privkey')
 
 module.exports = {

@@ -10,8 +10,14 @@
   ],
   "license": "Apache-2.0",
   "workspaces": {
-    "packages":["source/*", "tools/*"],
-    "nohoist":["**/@graphprotocol", "**/@graphprotocol/**"]
+    "packages": [
+      "source/*",
+      "tools/*"
+    ],
+    "nohoist": [
+      "**/@graphprotocol",
+      "**/@graphprotocol/**"
+    ]
   },
   "scripts": {
     "clean": "lerna run clean",
@@ -48,6 +54,7 @@
     "solhint": "^2.1.0",
     "truffle": "^5.0.32",
     "truffle-flatten": "^1.0.6",
+    "truffle-hdwallet-provider": "^1.0.17",
     "truffle-hdwallet-provider-privkey": "^1.0.3",
     "truffle-verify": "^1.0.4"
   },

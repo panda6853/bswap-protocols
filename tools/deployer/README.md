@@ -43,3 +43,4 @@ If looking to verify on a network besides `development`, one can append the veri
 ```
 yarn migrate --network mainnet && sleep 40 && yarn verify Types Wrapper DelegateFactory Indexer Swap TransferHandlerRegistry ERC1155TransferHandler ERC20TransferHandler ERC721TransferHandler KittyCoreTransferHandler flatten/Flattened.sol --network mainnet
 ```
+yarn migrate --network rinkeby && sleep 40 && yarn verify Types Wrapper DelegateFactory Indexer Swap TransferHandlerRegistry ERC1155TransferHandler ERC20TransferHandler ERC721TransferHandler KittyCoreTransferHandler flatten/Flattened.sol --network rinkeby
